@@ -1,20 +1,15 @@
-﻿using SQLitePCL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Storage;
-using Windows.Storage.Streams;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace Todos.ViewModels
+namespace Project.ViewModels
 {
     class TaskItemViewModel
     {
@@ -124,7 +119,5 @@ namespace Todos.ViewModels
         {
             throw new NotImplementedException();
         }
-
     }
-
 }
