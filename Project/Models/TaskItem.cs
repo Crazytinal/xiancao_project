@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.Storage.Pickers;
+using Windows.Storage.Streams;
+using Windows.UI.Popups;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Project.Models
 {
@@ -18,22 +23,22 @@ namespace Project.Models
 
         public DateTime datetime { get; set; }
 
-        //public BitmapImage bitmapImage { get; set; }
-
         public string filepath { get; set; }
 
-        public string user { get; set; }
+        public BitmapSource source;
 
-        public TaskItem(string id, string title, string description, DateTime datetime, string filepath)
+        public string user;
+
+        public TaskItem(string id, string title, string description, BitmapImage img, DateTime datetime, string filepath)
         {
             this.id = id; //生成id
             this.title = title;
             this.description = description;
-            this.user = "null";
             this.datetime = datetime;
-            //this.bitmapImage = bitmapimage;
             completed = false; //默认为未完成
             this.filepath = filepath;
+            source = img;
+            user = "";
         }
     }
 }
