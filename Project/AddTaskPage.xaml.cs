@@ -32,6 +32,7 @@ namespace Project
         public AddTaskPage()
         {
             this.InitializeComponent();
+            //aaaaa
             this.ViewModel = new ViewModels.TaskItemViewModel();
             FileInfo pfile = new FileInfo("Todos.exe");
             this.path = pfile + "Assets\\SplashScreen.scale-200.png";
