@@ -25,14 +25,14 @@ namespace Todos.Models
 
         public string filepath { get; set; }
 
-        public string currentUser { get; set; }
+        public string user { get; set; }
 
         public TaskItem(string id, string title, string description, DateTime datetime, string filepath)
         {
             this.id = id; //生成id
             this.title = title;
             this.description = description;
-            this.currentUser = "null";
+            this.user = "null";
             this.datetime = datetime;
             //this.bitmapImage = bitmapimage;
             completed = false; //默认为未完成
