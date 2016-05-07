@@ -29,7 +29,6 @@ namespace Project.ViewModels
             // 获取当前应用程序所在位置的路径
             FileInfo pfile = new FileInfo("Todos.exe");
             // 图片绝对的路径 = 绝对路径+相对路径
-            path = pfile.DirectoryName + "\\Assets\\set.jpg";
 
             // 从数据库中加载数据
             getItemFromDB();
@@ -46,19 +45,12 @@ namespace Project.ViewModels
                 {
                     while (SQLiteResult.ROW == statement.Step())
                     {
+                        //do with pic
                         BitmapImage bimage = new BitmapImage();
-                        if ((string)statement[4] != "")
-                        {
-                            // 处理图片
-                            StorageFile file = await StorageFile.GetFileFromPathAsync((string)statement[4]);
-                            IRandomAccessStream instream = await file.OpenAsync(FileAccessMode.Read);
-                            string boot = Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList.Add(file);
-                            await bimage.SetSourceAsync(instream);
-                        }
-                        else
-                        {
-                            bimage = null;
-                        }
+                        StorageFile file = await StorageFile.GetFileFromPathAsync((string)statement[4]);
+                        IRandomAccessStream instream = await file.OpenAsync(FileAccessMode.Read);
+                        string boot = Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList.Add(file);
+                        await bimage.SetSourceAsync(instream);
                         // 处理时间
                         DateTime dt;
                         DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
@@ -76,19 +68,19 @@ namespace Project.ViewModels
 
         }
 
-        public void AddTaskItem(string title, string description, DateTime datetime, string filepath, string user)
+        public void AddTaskItem(string title, string description, DateTime datetime, string filepath, string username)
         {
             if (filepath == null) filepath = path;
             var dp = App.conn;
             try
             {
-                using (var Todolist = dp.Prepare("INSERT INTO TaskItem (Title, Detail, Datetime, Filepath, User) VALUES (?, ?, ?, ?, ?)"))
+                using (var Todolist = dp.Prepare("INSERT INTO TaskItem (Title, Detail, Datetime, Filepath, Username) VALUES (?, ?, ?, ?, ?)"))
                 {
                     Todolist.Bind(1, title);
                     Todolist.Bind(2, description);
                     Todolist.Bind(3, datetime.Date.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo));
                     Todolist.Bind(4, filepath);
-                    Todolist.Bind(5, user);
+                    Todolist.Bind(5, username);
                     Todolist.Step();
                     getItemFromDB();
                 }

@@ -38,7 +38,7 @@
                                 <!-- 只绑定了title, 其余请自己完成-->
                                 <Image Grid.Column="1" Source="{x:Bind source}" Height="90" Width="90" Margin="0,3,12,7"/>
                                 <TextBlock Text="{x:Bind title}" Grid.Column="2" VerticalAlignment="Center" Foreground="Black" FontWeight="Normal" FontSize="15" LineHeight="20" TextWrapping="Wrap" />
-                                <TextBlock Text="{x:Bind user}" Grid.Column="3" VerticalAlignment="Center" Foreground="Black" FontWeight="Normal" FontSize="15" LineHeight="20" TextWrapping="Wrap"/>
+                                <TextBlock Text="{x:Bind username}" Grid.Column="3" VerticalAlignment="Center" Foreground="Black" FontWeight="Normal" FontSize="15" LineHeight="20" TextWrapping="Wrap"/>
                                 <AppBarButton Grid.Column="4" Icon="Setting" IsCompact="True" VerticalAlignment="Center">
                                     <AppBarButton.Flyout>
                                         <MenuFlyout>

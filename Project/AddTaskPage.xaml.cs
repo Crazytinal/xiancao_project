@@ -33,7 +33,8 @@ namespace Project
         {
             this.InitializeComponent();
             this.ViewModel = new ViewModels.TaskItemViewModel();
-            this.path = "";
+            FileInfo pfile = new FileInfo("Todos.exe");
+            this.path = pfile + "Assets\\SplashScreen.scale-200.png";
             this.currentUser = "null";
         }
         ViewModels.TaskItemViewModel ViewModel { get; set; }

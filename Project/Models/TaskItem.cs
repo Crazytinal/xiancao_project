@@ -27,7 +27,7 @@ namespace Project.Models
 
         public BitmapSource source;
 
-        public string user;
+        public string username;
 
         public TaskItem(string id, string title, string description, BitmapImage img, DateTime datetime, string filepath)
         {
@@ -38,7 +38,7 @@ namespace Project.Models
             completed = false; //默认为未完成
             this.filepath = filepath;
             source = img;
-            user = "";
+            username = "";
         }
     }
 }
