@@ -7,50 +7,61 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row ="0">
-            <!--title-->
-            <TextBlock x:Name="textBlock" Grid.Row="0" Text="         task content" Style="{StaticResource HeaderTextBlockStyle}"/>
-        </Grid>
-        <Grid Grid.Row ="1">
-            <!--task title-->
-            <TextBox Name="title" TextAlignment="Center" BorderBrush="White" Margin="46,0,716,0"/>
-            <DatePicker Name="date" Margin="760,31,0,37" Width="318"></DatePicker>
-        </Grid>
-        <Grid Grid.Row ="2">
-            <!--task creator & time-->
-            <TextBlock Name="creator" TextAlignment="Center"></TextBlock>
-        </Grid>
-        <Grid Grid.Row ="3">
+    <Viewbox>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="VisualStateMin0">
+                    <VisualState.Setters>
+                        <Setter Target="right.(UIElement.Visibility)" Value="Collapsed"/>
+                        <Setter Target="left.(Grid.ColumnSpan)" Value="2"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="VisualStateMin800">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid x:Name="BigS"  Background="#FFE2DDFB">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0" Name="detail" TextAlignment="Justify" Margin="56,0,0,0" HorizontalAlignment="Left" Width="584" BorderBrush="White"></TextBox>
-            <Image Name="img" Source="/Assets/StoreLogo.png" HorizontalAlignment="Center" Grid.Column="1" Margin="0,0,78,0"></Image>
+            <Grid x:Name="left">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="654">
+                        <TextBlock x:Name="creator" Text=" Creator:"  TextAlignment="Left" Style="{StaticResource HeaderTextBlockStyle}"  VerticalAlignment="Top" FontSize="32" Width="560"/>
+                        <Image x:Name="img" Source="/Assets/StoreLogo.png" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="360" Height="180" Stretch="UniformToFill"/>
+                        <TextBox x:Name="title" TextAlignment="Justify" FontSize="21.333" VerticalAlignment="Center"  RelativePanel.AlignRightWithPanel="True" SelectionHighlightColor="#FF008EFF" Header="Title"/>
+                        <TextBox x:Name="detail" TextAlignment="Justify" FontSize="21.333" VerticalAlignment="Center" SelectionHighlightColor="#FF008EFF" Height="119" Header="Details"/>
+                        <DatePicker x:Name="date"  FontSize="21.333" HorizontalAlignment="Left" Header="Create time" Width="556" Margin="0,12,0,0"/>
+                        <RelativePanel Width="422" Margin="0,24,0,0" Height="69">
+                            <Button x:Name="Updata_button" Content="Updata"  HorizontalAlignment="Left" Width="138" Click="Updata_Click"  Margin="0,0,-75,-30" Style="{StaticResource PivotTitleContentControlStyle}"  Background="#33005B68" Height="64" FontSize="24"/>
+                            <Button x:Name="Delete_buttton" Content="delete" RelativePanel.AlignRightWithPanel="True" Click="Delete_buttton_Click" Style="{StaticResource PivotTitleContentControlStyle}"  Background="#33005B68" Height="72" Margin="-66,0,0,-38" Width="138" FontSize="24"/>
+                        </RelativePanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+            <Grid x:Name="right" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer Margin="0,26,14,575" Height="119" VerticalScrollBarVisibility="Auto"/>
+                <Grid>
+                    <TextBox Grid.Row="0"  x:Name="comment"   TextWrapping="Wrap" Text="在此填写评论" Height="78" Margin="60,575,302,0" FontSize="24"/>
+                    <Button Grid.Row="0" x:Name="Submit" Content="Submit"  VerticalAlignment="Top" Click="Submit_Click" Margin="385,609,0,0" Style="{StaticResource PivotTitleContentControlStyle}"  Background="#33005B68" Height="68" Width="141" FontSize="26.667" RenderTransformOrigin="0.322,-0.27"/>
+                    <TextBlock Text="看看大家都在说些什么..." Style="{StaticResource HeaderTextBlockStyle}" FontSize="29.333" Height="41" Margin="44,34,253,0" VerticalAlignment="Top"/>
+                    <ListView x:Name="listView" HorizontalAlignment="Left" Height="394" Margin="46,94,0,0" VerticalAlignment="Top" Width="554">
+                        <TextBlock x:Name="comment_bar" TextAlignment="Left"/>
+                    </ListView>
+                </Grid>
+            </Grid>
         </Grid>
-        <Grid Grid.Row ="4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="                          看看大家都在说些什么..."/>
-            <TextBlock Grid.Column="1" Name="comment_bar" TextAlignment="Left"></TextBlock>
-        </Grid>
-        <Grid Grid.Row ="5">
-            <TextBox x:Name="comment" HorizontalAlignment="Left" Margin="0,74,0,0" TextWrapping="Wrap" Text="在此填写评论" VerticalAlignment="Top" Width="451" Height="52"/>
-            <Button x:Name="Submit" Content="Submit" HorizontalAlignment="Left" Margin="476,82,0,0" VerticalAlignment="Top" Click="Submit_Click"/>
-            <Button x:Name="Updata" Content="Update" HorizontalAlignment="Left" Margin="868,82,0,0" VerticalAlignment="Top" Click="Updata_Click"/>
-            <Button x:Name="Delete_buttton" Content="delete" HorizontalAlignment="Left" Margin="983,80,0,0" VerticalAlignment="Top" Click="Delete_buttton_Click"/>
-            <!--write comment-->
-        </Grid>
-    </Grid>
+    </Viewbox>
 </Page>
