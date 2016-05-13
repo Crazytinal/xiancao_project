@@ -9,10 +9,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Name="All" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Name="All" Background="#FFE2DDFB">
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="170"/>
+                <ColumnDefinition Width="50"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             
@@ -22,10 +22,11 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock x:Name="textBlock" Grid.Row="0" Text="task list" Style="{StaticResource HeaderTextBlockStyle}"/>
-                <ListView Grid.Row="1" IsItemClickEnabled="True"
+                <ListView
+                      Grid.Row="1" IsItemClickEnabled="True"
                       ItemClick="TaskListView_ItemClick"
                       x:Name="TaskListView"
-                      ItemsSource="{x:Bind ViewModel.AllItems}" HorizontalAlignment="Left" RenderTransformOrigin="0.481,0.485" Width="711" Margin="0,0,-71,-139">
+                      ItemsSource="{x:Bind ViewModel.AllItems}" HorizontalAlignment="Left" RenderTransformOrigin="0.481,0.485" Width="711" Margin="0,0,0,-1">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="md:TaskItem">
                             <Grid Height="100">
@@ -36,7 +37,6 @@
                                     <ColumnDefinition Width="200"></ColumnDefinition>
                                     <ColumnDefinition Width="100"/>
                                 </Grid.ColumnDefinitions>
-                                <!-- 只绑定了title, 其余请自己完成-->
                                 <Image Grid.Column="1" Source="{x:Bind source}" Height="90" Width="90" Margin="0,3,12,7"/>
                                 <TextBlock Text="{x:Bind title}" Grid.Column="2" VerticalAlignment="Center" Foreground="Black" FontWeight="Normal" FontSize="15" LineHeight="20" TextWrapping="Wrap" />
                                 <TextBlock Text="{x:Bind username}" Grid.Column="3" VerticalAlignment="Center" Foreground="Black" FontWeight="Normal" FontSize="15" LineHeight="20" TextWrapping="Wrap"/>

@@ -7,12 +7,42 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="LoginOut_B" Content="LoginOut" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="715,564,0,0" Click="LoginOut_B_Click"/>
-        <TextBlock x:Name="username" HorizontalAlignment="Left" Height="42" Margin="164,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="285"/>
-        <TextBlock  HorizontalAlignment="Left" Height="42" Margin="62,44,0,0" TextWrapping="Wrap" Text="HELLO " VerticalAlignment="Top" Width="285"/>
-        <TextBlock x:Name="root" HorizontalAlignment="Left" Height="42" Margin="113,44,0,0" TextWrapping="Wrap" Text="worker " VerticalAlignment="Top" Width="285"/>
-        <Button x:Name="change_passwd" Content="change password" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="262,564,0,0" Click="change_passwd_Click"/>
+    <Grid Background="#FFE2DDFB">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="VisualStateMin0">
+                    <VisualState.Setters>
+                        <Setter Target="LoginOut_B.(Grid.Column)" Value="0"/>
+                        <Setter Target="LoginOut_B.(Grid.ColumnSpan)" Value="2"/>
+                        <Setter Target="Password_change.(Grid.ColumnSpan)" Value="2"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="VisualStateMin800">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Button Grid.Column="1" Grid.Row="1"  x:Name="LoginOut_B" Content="LogOut"  Style="{StaticResource PivotTitleContentControlStyle}"   Background="#33005B68" FontSize="26.667" Click="LoginOut_B_Click" Width="246" Height="88" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="Password_change" Content="Password_change" Style="{StaticResource PivotTitleContentControlStyle}"  Background="#33005B68" FontSize="26.667" Click="change_passwd_Click" Height="88" Width="263" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="186,137,191,135" Grid.Row="1"/>
+        <TextBlock x:Name="username" HorizontalAlignment="Left" TextWrapping="Wrap" Text="user" VerticalAlignment="Top" FontSize="38.667" Foreground="Black" Margin="305,114,0,0"/>
+        <TextBlock x:Name="root" HorizontalAlignment="Left" TextWrapping="Wrap" Text="root" VerticalAlignment="Top" FontSize="38.667" Foreground="Black" Margin="186,114,0,0"/>
+        <TextBlock  HorizontalAlignment="Left" TextWrapping="Wrap" Text="HELLO" VerticalAlignment="Top" FontSize="38.667" Foreground="Black" Margin="10,114,0,0"/>
+        <!--<TextBlock x:Name="username" HorizontalAlignment="Left" Height="42" Margin="164,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="285"/>-->
+        <!--<TextBlock  HorizontalAlignment="Left" Height="42" Margin="62,44,0,0" TextWrapping="Wrap" Text="HELLO " VerticalAlignment="Top" Width="285"/>-->
+        <!--<TextBlock x:Name="root" HorizontalAlignment="Left" Height="42" Margin="113,44,0,0" TextWrapping="Wrap" Text="worker " VerticalAlignment="Top" Width="285"/>-->
         
 
     </Grid>
