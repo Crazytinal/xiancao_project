@@ -9,5 +9,11 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Button x:Name="LoginOut_B" Content="LoginOut" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="715,564,0,0" Click="LoginOut_B_Click"/>
+        <TextBlock x:Name="username" HorizontalAlignment="Left" Height="42" Margin="164,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="285"/>
+        <TextBlock  HorizontalAlignment="Left" Height="42" Margin="62,44,0,0" TextWrapping="Wrap" Text="HELLO " VerticalAlignment="Top" Width="285"/>
+        <TextBlock x:Name="root" HorizontalAlignment="Left" Height="42" Margin="113,44,0,0" TextWrapping="Wrap" Text="worker " VerticalAlignment="Top" Width="285"/>
+        <Button x:Name="change_passwd" Content="change password" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="262,564,0,0" Click="change_passwd_Click"/>
+        
+
     </Grid>
 </Page>

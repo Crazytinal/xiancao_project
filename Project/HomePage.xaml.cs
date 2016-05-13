@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -32,6 +33,18 @@ namespace Project
             App.login = false;
             App.login_user = null;
             Frame.Navigate(typeof(LoginPage), "Login Out Successfully!");
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+                var user = App.login_user;
+                username.Text = user.Username;
+                root.Text = user.Root == 1 ? "boss" : "worker";
+        }
+
+        private void change_passwd_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ChagePasswordPage), "");
         }
     }
 }
