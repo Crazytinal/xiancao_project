@@ -7,7 +7,36 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="LoginOut_B" Content="LoginOut" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="715,564,0,0" Click="LoginOut_B_Click"/>
+    <Grid Background="#FFE2DDFB">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="VisualStateMin0">
+                    <VisualState.Setters>
+                        <Setter Target="LoginOut_B.(Grid.Column)" Value="0"/>
+                        <Setter Target="LoginOut_B.(Grid.ColumnSpan)" Value="2"/>
+                        <Setter Target="Password_change.(Grid.ColumnSpan)" Value="2"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="VisualStateMin800">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Button Grid.Column="1" Grid.Row="1"  x:Name="LoginOut_B" Content="LogOut"  Style="{StaticResource PivotTitleContentControlStyle}"   Background="#33005B68" FontSize="26.667" Click="LoginOut_B_Click" Width="246" Height="88" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="Password_change" Content="Password_change" Style="{StaticResource PivotTitleContentControlStyle}"  Background="#33005B68" FontSize="26.667" Click="LoginOut_B_Click" Height="88" Width="263" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Wellcome" HorizontalAlignment="Left" TextWrapping="Wrap" Text="WellCome! 123" VerticalAlignment="Top" FontSize="38.667" Foreground="Black"/>
     </Grid>
 </Page>
